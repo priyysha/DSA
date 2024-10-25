@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+public class SortArray {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of elements (at least 10): ");
+        int n = scanner.nextInt();
+
+        if (n < 10) {
+            System.out.println("You must enter at least 10 elements.");
+            return;
+        }
+
+        int[] numbers = new int[n];
+
+        System.out.println("Enter " + n + " elements:");
+        for (int i = 0; i < n; i++) {
+            numbers[i] = scanner.nextInt();
+        }
+
+        bubbleSortAscending(numbers);
+        System.out.println("Array in Ascending Order: ");
+        printArray(numbers);
+
+        bubbleSortDescending(numbers);
+        System.out.println("Array in Descending Order: ");
+        printArray(numbers);
+
+        scanner.close();
+    }
+
+    public static void bubbleSortAscending(int[] array) {
+        int n = array.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    public static void bubbleSortDescending(int[] array) {
+        int n = array.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (array[j] < array[j + 1]) {
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    public static void printArray(int[] array) {
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+}
